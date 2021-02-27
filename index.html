@@ -15,8 +15,8 @@
         .nav-bk4{
             background: #070000;  
             background: -webkit-linear-gradient(to right, #070000, #4C0001, #070000);  
-            background: linear-gradient(to right, #070000, #4C0001, #070000); 
-        }
+            background: linear-gradient(to right, #070000, #4C0001, #070000); }
+        .screen {background-color: white; border-radius: 8px; border-color: white; border-width: 10px; border-style: solid;}
     </style>
 </head>
 <body style= "background-color: rgba(0, 0, 0, 0.37);">
@@ -35,16 +35,60 @@
     </div>  
     
     
-<div class="container">
-    <p style="background-color: white;
-              border-radius: 8px;
-              border-color: white;
-              border-width: 10px;
-              border-style: solid;
-              ">
-    The beggining 
-    </p>
+<div id= "windows">
+    
+    <div class="screen" id="home">
+        This <strong>app</strong> will...
+    </div>
+    
+    <div class="screen" id="form" >
+    <form>
+        <input type="text" name="address" id="address"> Address 
+    </form>
+     <button id="search">
+                Search    
+     </button>
+    </div>
+    
+    <div class="screen" id="data" >
+
+    </div>
+
+    <div class="screen" id="map">
+    
+    </div>
+    
+    <div class="screen" id="about">
+
+    </div>
+    
 </div>
+    
+
+    
+
+    
+<script>
+    let endpoint = "https://data.cityofchicago.org/resource/aksk-kvfp.json";
+    let template = document.querySelector("div.card");
+    document.querySelector("#search").addEventListener("click", (e) => {
+       let ad = document.querySelector("#address").value;
+       let url = endpoint + "?address=" + ad;
+        fetch(url)
+        .then((responce) => {return responce.json(); })
+        .then((data) => {
+            for (let item  of data){
+                let p = document.createElement ("p");
+                p.innetText = item["community_area_name"]; 
+                document.querySelector("#data").append(p);
+            }
+
+        })
+                                                      
+    })
+   
+                                                       
+    </script>
 
 </body>
 </html>
