@@ -95,7 +95,22 @@
 }
 </script>
 
-   
+<script>
+    document.querySelector("#home").style.display = "block";
+    let navanchors = document.querySelectorAll("div#nav a");
+    navanchors.forEach((anchor) => {
+        anchor.addEventListener("click", (event)=> {
+        document.querySelectorAll(".screen").forEach((screen)=>{
+            screen.style.display = "none";
+})
+        let screen = event.target.getAttribute("data-screen");
+        let targetScreen = document.querySelector("#" + screen);
+        targetScreen.style.display = "block";
+
+})
+})
+    
+</script>   
     
 <script>
 fetch("https://data.cityofchicago.org/resource/aksk-kvfp.json")
