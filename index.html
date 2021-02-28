@@ -11,6 +11,20 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <link rel="manifest" href="manifest.json">
   <title>Project 1</title> 
+  
+<script>
+    let map;
+
+      function initMap(){
+        let map = new google.maps.Map(document.querySelector("#map"), {
+          zoom: 8,
+        });
+        
+      }
+        
+    
+    </script>   
+    
     <style>
         #nav {background-color: #A9A9A9; padding: 7px; color: white;}
         .jumbotron {margin: 0px; padding: 25px;}
@@ -26,7 +40,20 @@
             border-style: solid;}
     </style>
     
-
+    <style type="text/css">
+      
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+        html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+  
+    </style>
     
 
 </head>
@@ -155,7 +182,9 @@ fetch("https://data.cityofchicago.org/resource/aksk-kvfp.json")
                                                        
     </script>
     
-
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF1euMeWAcVfqiVGI8vk13vX-oMjnFGwg&callback=initMap&libraries=&v=weekly"async>
+</script>
     
 
 
