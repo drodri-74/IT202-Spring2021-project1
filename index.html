@@ -98,7 +98,18 @@
    
     
 <script>
+fetch("https://data.cityofchicago.org/resource/aksk-kvfp.json")
+  .then ((responce)=> {
+    return responce.json()
+}).then ((data)=>{
+    for (let i of data) {
+      let opt = document.createElement("option");
+      opt.innerText = i.id;
+      document.querySelector("#id").append(opt);
 
+}
+        
+})
   
   
     let endpoint = "https://data.cityofchicago.org/resource/aksk-kvfp.json";
