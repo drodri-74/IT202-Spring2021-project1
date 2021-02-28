@@ -19,7 +19,33 @@
         let map = new google.maps.Map(document.querySelector("#map"), {
           zoom: 8,
         });
+      let endpoint = "https://data.cityofchicago.org/resource/aksk-kvfp.json";
+    document.querySelector("#search").addEventListener("click", (e) => {
+       
+       let ad = document.querySelector("#id").value;
+       let url = endpoint + "?id=" + ad;
+        fetch(url)
+        .then((responce) => {return responce.json(); })
+        .then((data) => {
+            for (let item  of data){
         
+        
+                let marker = new google.maps.Marker({
+                    position: {lat: parseFloat(item["latitude"]), lng: parseFloat(item["longitude"])},
+                    map: map
+                   
+                });
+          
+                let infowindow = new google.maps.InfoWindow({
+                    content: item["id"]
+                });
+         
+                  
+                marker.addListener("click", ()=> {
+                    infowindow.open(map,marker);
+                    
+                });
+            }})})
       }
         
     
